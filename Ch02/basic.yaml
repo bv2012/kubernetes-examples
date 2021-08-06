@@ -6,3 +6,5 @@ spec:
   containers:
   - name: webcont
     image: nginx
+    ports:
+    - containerPort: 80
