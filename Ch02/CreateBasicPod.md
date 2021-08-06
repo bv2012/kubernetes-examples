@@ -51,5 +51,39 @@ kubectl delete pod basicpod
 
 8. Create a simple service to expose pod to toher nodes and pods in the cluster
 
+9. Add label to the pod and a selector to the service so it knows which object to communicate with
+
+EDIT BASIC.YAML
+
+10. Create new pod and service. Verify both have been created
+
+kubectl create -f basic.yaml
+
+kubectl create -f basicservice.yaml
+
+kubectl get pod
+
+kubectl get svc
+
+11. Test access to the web server using the CLUSTER-IP for the basicservice.
+
+   curl IP
+
+ 12.   now expose the service to outside the cluster as well. Delete the service, edit the file and add a type declaration. NodePort
+
+ kubectl delete svc basicservice
+
+ Edit basicservice.yaml
+
+13. Create the service again. Note there is a different TYPE and CLUSTER-IP and also a high-numbered port.
+
+ kubectl create -f basicservice.yaml
+
+ kubectl get svc
+
+
+14. use curl ifconfig.io to get public IP address of the node and high port 
+
+curl ifconfig.io
 
 
