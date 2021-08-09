@@ -33,6 +33,13 @@ spec:
       - image: 10.111.231.7:5000/simpleapp
         imagePullPolicy: Always
         name: simpleapp
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
