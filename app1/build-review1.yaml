@@ -26,7 +26,10 @@ spec:
         app: break2
     spec:
       containers:
-      - image: nginx
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
         imagePullPolicy: Always
         name: brokenapp
         resources: {}
@@ -36,12 +39,12 @@ spec:
         image: k8s.gcr.io/goproxy:0.1
         readinessProbe:
           tcpSocket:
-            port: 808
+            port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           tcpSocket:
-            port: 808
+            port: 8080
           initialDelaySeconds: 15
           periodSeconds: 20
       dnsPolicy: ClusterFirst
