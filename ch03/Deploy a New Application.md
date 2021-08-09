@@ -25,4 +25,4 @@
 
     sudo find / -name date.out
 
-    
+sudo tail /var/lib/containers/storage/overlay/f66a5829cc034a461fe87b5ed4b6db7b73d5107213edbb92a35d5702a7460913/diff/date.out
