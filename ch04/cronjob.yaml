@@ -8,9 +8,11 @@ spec:
     spec:
       template:
         spec:
+#          activeDeadlineSeconds: 10
           containers:
           - name: resting
             image: busybox
             command: ["/bin/sleepy"]
             args: ["3"]
-          restartPolicy: OnFailure
+#            args: ["30"]
+          restartPolicy: Never
