@@ -29,6 +29,9 @@ kubectl delete deploy design2
 
 kubectl get pods | grep design2
 
+kubectl get -l app=orange pod
+
+kubectl delete -l app=orange pod
 
 ```
 
@@ -37,3 +40,16 @@ kubectl get pods | grep design2
 
 1. Create a new pod running the vish/stress image. A YAML stress.yaml file has been included in the course tarball
 
+
+
+
+
+```
+kubectl create -f stress.yaml
+
+kubectl get pod stressmeout-7dc667854-nd5cx 
+
+kubectl delete -f stress.yaml
+
+kubectl delete deploy stressmeout
+```
