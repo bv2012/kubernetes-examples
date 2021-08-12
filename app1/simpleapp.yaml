@@ -31,14 +31,21 @@ spec:
     spec:
       containers:
       - image: 10.111.231.7:5000/simpleapp
+        volumeMounts:
+        - mountPath: /etc/cars
+          name: car-vol
+        - name: nfs-vol
+          mountPath: /opt
+        env:
+          - name: ilike
         imagePullPolicy: Always
         name: simpleapp
         readinessProbe:
           periodSeconds: 5
           exec:
             command:
-            - cat
-            - /tmp/healthy
+            - ls
+            - /etc/cars
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
@@ -61,6 +68,14 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+      - name: car-vol
+        configMap:
+          defaultMode: 420
+          name: fast-car
+      - name: nfs-vol
+        persistentVolumeClaim:
+          claimName: pvc-name
 status:
   availableReplicas: 6
   conditions:

@@ -10,6 +10,6 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /opt/sfw
-    server: cp                        #<-- Edit to match cp node name or IP
+    server: 10.111.231.7:5000                       #<-- Edit to match cp node name or IP
     readOnly: false
 
