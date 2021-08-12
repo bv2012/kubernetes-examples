@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2021-08-09T16:41:23Z"
-  generation: 1
+  creationTimestamp: "2021-08-12T15:17:08Z"
+  generation: 2
   labels:
     app: try1
   name: try1
   namespace: default
-  resourceVersion: "320359"
-  uid: 5b40a8c4-8273-4a34-8f5c-fdc55ca0e3bf
+  resourceVersion: "434845"
+  uid: 33fc58bc-e684-4eaf-b22e-1026e0785068
 spec:
   progressDeadlineSeconds: 600
   replicas: 6
@@ -34,19 +34,18 @@ spec:
         imagePullPolicy: Always
         name: simpleapp
         readinessProbe:
+          periodSeconds: 5
           exec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 5
-          periodSeconds: 5
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-      - name: goproxy
+      - name: gotproxy
         image: k8s.gcr.io/goproxy:0.1
         ports:
-        - containerPort: 8080
+        -  containerPort: 8080
         readinessProbe:
           tcpSocket:
             port: 8080
@@ -56,7 +55,7 @@ spec:
           tcpSocket:
             port: 8080
           initialDelaySeconds: 15
-          periodSeconds: 20
+          periodSeconds: 15 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -65,19 +64,19 @@ spec:
 status:
   availableReplicas: 6
   conditions:
-  - lastTransitionTime: "2021-08-09T16:41:30Z"
-    lastUpdateTime: "2021-08-09T16:41:30Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2021-08-09T16:41:23Z"
-    lastUpdateTime: "2021-08-09T16:41:30Z"
+  - lastTransitionTime: "2021-08-12T15:17:08Z"
+    lastUpdateTime: "2021-08-12T15:17:11Z"
     message: ReplicaSet "try1-764f4f79c5" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
-  observedGeneration: 1
+  - lastTransitionTime: "2021-08-12T15:17:46Z"
+    lastUpdateTime: "2021-08-12T15:17:46Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 2
   readyReplicas: 6
   replicas: 6
   updatedReplicas: 6
