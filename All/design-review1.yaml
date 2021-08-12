@@ -5,21 +5,22 @@ metadata:
 spec:
   containers:
   - image: vish/stress
+    imagePullPolicy: Always
     name: design-pod1
     resources:
       limits:
-        cpu: "2.22"
-        memory: "567Mi"
+        cpu: "1"
+        memory: "1Gi"
       requests:
-        cpu: "0.3"
-        memory: "456Mi"
+        cpu: "0.5"
+        memory: "500Mi"
     args:
     - -cpus
-    - "1"
+    - "2"
     - -mem-total
-    - "1036Mi"
+    - "1950Mi"
     - -mem-alloc-size
-    - "500Mi"
+    - "100Mi"
     - -mem-alloc-sleep
     - "1s"
 
